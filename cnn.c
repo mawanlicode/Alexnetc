@@ -206,14 +206,14 @@ void importcnn(CNN* cnn)
 
 	int i,j,c,r;
 	// C1的数据
-	for(i=0;i<cnn->C1->inChannels;i++)
+	for(i=0;i<cnn->C1->inChannels;i++)//读入weight的过程，读入i，在网络中为6
 	{
-		for(j=0;j<cnn->C1->outChannels;j++)
+		for(j=0;j<cnn->C1->outChannels;j++)//读入j，在网络中为1
 		{
-			for(r=0;r<cnn->C1->mapSize;r++)
+			for(r=0;r<cnn->C1->mapSize;r++)//读入r，在网络中为5
 			{
-				for(c=0;c<cnn->C1->mapSize;c++){
-					cnn->C1->mapData[i][j][r][c] = *ap++;
+				for(c=0;c<cnn->C1->mapSize;c++){ //读入c，在网络中为5
+					cnn->C1->mapData[i][j][r][c] = *ap++;//将对应地址数据读入
 					// printf("%f ", cnn->C1->mapData[i][j][r][c]);
 				}
 				// printf("\n");
@@ -223,7 +223,7 @@ void importcnn(CNN* cnn)
 		// printf("\n");
 	}
 
-	for(i=0;i<cnn->C1->outChannels;i++)
+	for(i=0;i<cnn->C1->outChannels;i++)//读入b的过程
 	{
 		cnn->C1->basicData[i] = *ap++;
 		// printf("%f ", cnn->C1->basicData[i]);
